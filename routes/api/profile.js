@@ -23,7 +23,7 @@ router.get('/me', auth, async (req, res) => {
     }
 });
 
-// @route   GET api/profile
+// @route   POST api/profile
 // @desc    Create/Update user's profile
 // @access  Private
 router.post('/', [auth, [
@@ -75,7 +75,19 @@ router.post('/', [auth, [
 		console.error(err);
 		res.status(500).send('Server Error');
 	}
-	return res.send(profileFields);
+});
+
+// @route   GET api/profile
+// @desc    Get all profiles
+// @access  Public
+router.get('/', async (req, res) => {
+	try {
+		const profiles = await Profile.find().populate('user', ['name', 'avatar']);
+		res.json(profiles);
+	} catch (err) {
+		console.error(err);
+		return res.status(500).send('Server Error');
+	}
 });
 
 module.exports = router;
