@@ -1,4 +1,6 @@
 {
-    "mongoURI": "mongodb://localhost:27017/devconnector",
-    "jwtSecret": "mysecrettoken"
-} 
+    "mongoURI": "mongodb+srv://kapsuser:kapsuser@devconnector-6ivqi.mongodb.net/devconnector?retryWrites=true&w=majority",
+    "jwtSecret": "mysecrettoken",
+    "githubClientId": "bf1b7fd497f5b2bfc53b",
+    "githubSecret": "59c62f948acfb6838223a834ef850aa2f5004abf"
+}
