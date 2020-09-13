@@ -13,13 +13,14 @@ const User = require('../../models/User');
 // @access  Private
 router.get('/me', auth, async (req, res) => {
     try {
-				const userProfile = await Profile.findOne({ user: req.user.id })
-				.populate('user', ['name', 'avatar']);
+			const profile = await Profile.findOne({ user: req.user.id })
+			.populate('user', ['name', 'avatar']);
 
-				if (!userProfile) return res.status(400).send({msg: 'No profile found for this user!'});
-		
-				return res.json(profile);
-			} catch (err) {
+			if (!profile) return res.status(400).send({msg: 'No profile found for this user!'});
+	
+			return res.json(profile);
+		} 
+	catch (err) {
         console.error(err);
         return res.status(500).send('Server Error!');
     }
